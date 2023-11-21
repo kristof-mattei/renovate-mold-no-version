@@ -1,7 +1,36 @@
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "dependencyDashboard": true,
+  "dependencyDashboardAutoclose": true,
   "extends": [
-    "github>kristof-mattei/renovate-config",
-    "github>kristof-mattei/renovate-config//rust/updateRustVersionInCargoToml",
-    "github>kristof-mattei/renovate-config//rust/updateChannelInRustToolchainToml"
-  ]
+    "config:base",
+    ":maintainLockFilesWeekly",
+    ":rebaseStalePrs",
+    ":semanticCommits",
+    ":semanticCommitScope(deps)",
+    "docker:enableMajor",
+    "docker:pinDigests",
+    ":prConcurrentLimitNone",
+    ":prHourlyLimitNone",
+    "helpers:pinGitHubActionDigests"
+  ],
+  "internalChecksFilter": "strict",
+  "lockFileMaintenance": {
+    "automerge": true
+  },
+  "packageRules": [
+    {
+      "automerge": true,
+      "description": "Automatically merges minor and patch-level updates",
+      "matchUpdateTypes": ["minor", "patch", "digest", "pin", "pinDigest"]
+    },
+    {
+      "automerge": false,
+      "description": "Automatically creates a PR whenever there is a new major Renovate version",
+      "matchUpdateTypes": ["major"]
+    }
+  ],
+  "platformAutomerge": true,
+  "rangeStrategy": "bump",
+  "rollbackPrs": true
 }

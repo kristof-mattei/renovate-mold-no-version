@@ -25,6 +25,12 @@
       "matchUpdateTypes": ["minor", "patch", "digest", "pin", "pinDigest"]
     },
     {
+      "description": "v prefix workaround for action updates",
+      "extractVersion": "^(?<version>v\\d+(?:\\.\\d+){0,2})$",
+      "matchDepTypes": ["action"],
+      "versioning": "regex:^v(?<major>\\d+)(\\.(?<minor>\\d+)\\.(?<patch>\\d+))?$"
+    },
+    {
       "automerge": false,
       "description": "Automatically creates a PR whenever there is a new major Renovate version",
       "matchUpdateTypes": ["major"]

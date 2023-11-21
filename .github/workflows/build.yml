@@ -27,4 +27,4 @@ jobs:
           show-progress: false
 
       - name: Set up mold
-        uses: rui314/setup-mold@89146af1406130f323d090fbf0881357e1978fc8 # v1
+        uses: rui314/setup-mold@89146af1406130f323d090fbf0881357e1978fc8
